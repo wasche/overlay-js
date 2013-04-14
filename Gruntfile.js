@@ -5,6 +5,14 @@ module.exports = function(grunt) {
   // Project configuration
   grunt.initConfig({
     pkg : grunt.file.readJSON ( 'package.json' )
+  , mkdir : {
+      setup : {
+        options : {
+          mode : 0755
+        , create : [ 'out' ]
+        }
+      }
+    }
   , setup : {
       // make dir out
       // copy bootstrap files
@@ -24,7 +32,7 @@ module.exports = function(grunt) {
       , pretty : true
       }
     , files : {
-        'out/index.html' : 'src/index.jade'
+        'out/index.html' : 'src/jade/index.jade'
       }
     }
   , stylus : {
@@ -35,7 +43,7 @@ module.exports = function(grunt) {
         }
       }
     , files : {
-        'out/style.css' : 'src/style.styl'
+        'out/style.css' : 'src/styl/style.styl'
       }
     }
   , watch : {
@@ -60,7 +68,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-stylus' );
   grunt.loadNpmTasks( 'grunt-contrib-jshint' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
+  grunt.loadNpmTasks( 'grunt-mkdir' );
 
-  grunt.registerTask ( 'default', ['jade', 'stylus'] );
+  grunt.registerTask( 'default',  ['jade', 'stylus'] );
+  grunt.registerTask( 'setup',    ['setup'] );
+  grunt.registerTask( 'cleanup',  ['cleanup'] );
+  grunt.registerTask( 'dist',     ['dist'] );
 
 };
