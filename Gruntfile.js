@@ -51,6 +51,7 @@ module.exports = function(grunt) {
         }
       , files : {
           'out/style.css' : 'src/styl/style.styl'
+        , 'out/overlay.css' : 'src/styl/overlay.styl'
         }
       }
     }
@@ -81,6 +82,10 @@ module.exports = function(grunt) {
       , options : {
           interrupt : true
         }
+      }
+    , copy : {
+        files : [ 'src/*.js', 'src/*.css', 'src/*.png' ]
+      , tasks : [ 'copy' ]
       }
     }
   });

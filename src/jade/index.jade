@@ -5,12 +5,62 @@ html
     link(rel='stylesheet', type='text/css', href='bootstrap.css')
     link(rel='stylesheet', type='text/css', href='bootstrap-responsive.css')
     link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', type='text/css', href='overlay.css')
 
   body
 
+    .container-fluid
+      .row
+        .span2
+          form
+            header
+              h2 Options
+            
+            fieldset
+              legend Backdrop
+              label.radio
+                input(type='radio', name='backdrop', id='backdrop-0', value=0, checked)
+                | Never
+              label.radio
+                input(type='radio', name='backdrop', id='backdrop-1', value=1)
+                | Always
+              label.radio
+                input(type='radio', name='backdrop', id='backdrop-2', value=2)
+                | When pinned
+
+            fieldset
+              legend Position
+              label.radio
+                input(type='radio', name='position', id='position-absolute', value='Absolute')
+                | Absolute
+              label.radio
+                input(type='radio', name='position', id='position-center', value='Center', checked)
+                | Center
+
+            fieldset
+              legend Content
+              textarea(rows=3, name='content')
+
+            fieldset
+              legend Other
+              label.checkbox
+                input(type='checkbox', name='autoShow', checked)
+                | Show automatically
+              label.checkbox
+                input(type='checkbox', name='close')
+                | Show close button
+
+            fieldset
+              legend &nbsp;
+              input(type='button', value='Create!', onclick='createOverlay(this.form)')
+
+        .span10.sandbox
 
     script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
     script(type='text/javascript', src='underscore-min.js')
     script(type='text/javascript', src='bootstrap.js')
     script(type='text/javascript', src='../lib/api.js')
     script(type='text/javascript', src='../lib/Overlay.js')
+    script(type='text/javascript', src='../lib/mixin/Position.Absolute.js')
+    script(type='text/javascript', src='../lib/mixin/Position.Center.js')
+    script(type='text/javascript', src='app.js')
