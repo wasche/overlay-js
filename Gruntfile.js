@@ -13,6 +13,15 @@ module.exports = function(grunt) {
         }
       }
     }
+  , copy : {
+      setup : {
+        files : [
+          { expand : true, cwd : 'src/', src : '*.js', dest : 'out/' }
+        , { expand : true, cwd : 'src/', src : '*.css', dest : 'out/' }
+        , { expand : true, cwd : 'src/', src : '*.png', dest : 'out/' }
+        ]
+      }
+    }
   , setup : {
       // make dir out
       // copy bootstrap files
@@ -45,6 +54,19 @@ module.exports = function(grunt) {
         }
       }
     }
+  , jshint: {
+      // define the files to lint
+      files: ['lib/**/*.js', 'test/**/*.js'],
+      // configure JSHint (documented at http://www.jshint.com/docs/)
+      options: {
+        // more options here if you want to override JSHint defaults
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true
+        }
+      }
+    }
   , watch : {
       jade : {
         files : [ 'src/**/*.jade' ]
@@ -68,10 +90,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-jshint' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   grunt.loadNpmTasks( 'grunt-mkdir' );
+  grunt.loadNpmTasks( 'grunt-contrib-copy' );
 
   grunt.registerTask( 'default',  ['jade', 'stylus'] );
   grunt.registerTask( 'setup',    ['setup'] );
   grunt.registerTask( 'cleanup',  ['cleanup'] );
   grunt.registerTask( 'dist',     ['dist'] );
+  grunt.registerTask( 'test',     ['jshint'] );
 
 };
