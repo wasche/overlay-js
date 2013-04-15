@@ -27,12 +27,11 @@ module.exports = function(grunt) {
   , jade : {
       compile : {
         options : {
-
+          pretty : true
         }
-      , pretty : true
-      }
-    , files : {
-        'out/index.html' : 'src/jade/index.jade'
+      , files : {
+          'out/index.html' : 'src/jade/index.jade'
+        }
       }
     }
   , stylus : {
@@ -41,9 +40,9 @@ module.exports = function(grunt) {
           paths : [ 'src/styl' ]
         , use : [ 'nib' ]
         }
-      }
-    , files : {
-        'out/style.css' : 'src/styl/style.styl'
+      , files : {
+          'out/style.css' : 'src/styl/style.styl'
+        }
       }
     }
   , watch : {
