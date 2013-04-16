@@ -2,7 +2,7 @@
 var app = (function (){
 
   var overlay
-    , sandbox = $('.sandbox')[ 0 ]
+    , sandbox = $('.sandbox').first()
     , app = {}
     ;
 
@@ -52,3 +52,20 @@ console.log( options );
   return app;
 
 }());
+
+$(function() {
+
+  $('form input[name="position"]').change( function() {
+    var disabled = !$('#position-absolute').prop( 'checked' );
+    $('#left').prop( 'disabled', disabled );
+    $('#top').prop('disabled', disabled );
+
+    var showBtn = false;
+    $('form input[value*="Relative"]').each( function( idx, elmt ) {
+      showBtn = showBtn || $(elmt).prop( 'checked' );
+    });
+
+    $('.spawner').css( 'display', showBtn ? 'block' : 'none' );
+  });
+
+});

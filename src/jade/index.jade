@@ -34,8 +34,8 @@ html
                 input(type='radio', name='position', id='position-absolute', value='Absolute')
                 | Absolute
               .controls-row
-                input.input-mini(type='text', name='left', placeholder='left', disabled)
-                input.input-mini(type='text', name='top', placeholder='top', disabled)
+                input.input-mini(type='text', name='left', id='left', placeholder='left', disabled)
+                input.input-mini(type='text', name='top', id='top', placeholder='top', disabled)
               label.radio
                 input(type='radio', name='position', id='position-center', value='Center', checked)
                 | Center
@@ -86,7 +86,7 @@ html
               input.btn.btn-large(type='button', value='Create!', onclick='app.createOverlay(this.form)')
 
         .span10.sandbox.well
-          span.btn BOOM!
+          span.btn.spawner BOOM!
 
     script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
     script(type='text/javascript', src='underscore-min.js')
