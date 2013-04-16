@@ -18,6 +18,7 @@ var app = (function (){
           'new Overlay({'
         , '  closeContent : \'&amp;times;\''
         ]
+      , relative = false
       , disabled
       , i
       ;
@@ -56,11 +57,17 @@ var app = (function (){
         else {
           code.push( ', position : Overlay.Position' + form.position[ i ].value );
         }
+        relative = /^Relative/.test( form.position[ i ].value );
         break;
       }
     }
 
-    code.push( ')' );
+    if ( relative ) {
+      code.push( '}, elmt)' );
+    }
+    else {
+      code.push( '})' );
+    }
     code.push( '.setContent( \'' + form.content.value.replace( '\'', '\\\'' ) + '\' )' );
     if ( form.autoShow.checked ) {
       code.push( '.show()' );
