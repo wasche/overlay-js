@@ -26,13 +26,13 @@
             <fieldset>
               <legend>Backdrop</legend>
               <label class="radio">
-                <input type="radio" name="backdrop" id="backdrop-0" value="0" checked>Never
+                <input type="radio" name="backdrop" id="backdrop-never" value="NEVER" checked>Never
               </label>
               <label class="radio">
-                <input type="radio" name="backdrop" id="backdrop-1" value="1">Always
+                <input type="radio" name="backdrop" id="backdrop-always" value="ALWAYS">Always
               </label>
               <label class="radio">
-                <input type="radio" name="backdrop" id="backdrop-2" value="2">When pinned
+                <input type="radio" name="backdrop" id="backdrop-when_pinned" value="WHEN_PINNED">When pinned
               </label>
             </fieldset>
             <fieldset>
@@ -82,10 +82,10 @@
             <fieldset>
               <legend>Other</legend>
               <label class="checkbox">
-                <input type="checkbox" name="autoShow" checked>Show automatically
+                <input type="checkbox" name="autoShow" id="autoShow" checked>Show automatically
               </label>
               <label class="checkbox">
-                <input type="checkbox" name="close" checked>Show close button
+                <input type="checkbox" name="close" id="showClose" checked>Show close button
               </label>
             </fieldset>
           </form>

@@ -10,37 +10,27 @@ var app = (function (){
 
   app.createOverlay = function() {
     var options = {
-          content : form.content.value
-        , showCloseButton : form.close.checked
-        , autoShow : form.autoShow.checked
-        , closeContent : '&times;'
+          closeContent : '&times;'
         , container : sandbox
         }
       , showBtn = false
       , code = [
           'new Overlay({'
-        , '  content : \'' + options.content + '\''
-        , ', showCloseButton : ' + options.showCloseButton
-        , ', autoShow : ' + options.autoShow
-        , ', closeContent : \'&amp;times;\''
+        , '  closeContent : \'&amp;times;\''
         ]
       , disabled
       , i
       ;
 
-    $('form input[value*="Relative"]').each( function( idx, elmt ) {
-      showBtn = showBtn || $(elmt).prop( 'checked' );
-    });
-    disabled = !showBtn && !$('#position-absolute').prop( 'checked' );
-
-    $('#left').prop( 'disabled', disabled );
-    $('#top').prop('disabled', disabled );
-    $('.spawner').css( 'display', showBtn ? 'block' : 'none' );
+    if ( form.close.checked !== $(form.close).prop( 'defaultChecked' ) ) {
+      options.showCloseButton = form.close.checked;
+      code.push( ', showCloseButton : ' + form.close.checked );
+    }
 
     for (i = form.backdrop.length - 1; i >= 0; i--) {
-      if ( form.backdrop[ i ].checked ) {
-        options.backdrop = parseInt( form.backdrop[ i ].value );
-        code.push( ', backdrop : ' + options.backdrop );
+      if ( form.backdrop[ i ].checked && !$(form.backdrop[ i ]).prop( 'defaultChecked' ) ) {
+        options.backdrop = Overlay.BACKDROP[ form.backdrop[ i ].value ];
+        code.push( ', backdrop : Overlay.BACKDROP.' + form.backdrop[ i ].value );
         break;
       }
     }
@@ -70,13 +60,31 @@ var app = (function (){
       }
     }
 
-    code.push( ');' );
+    code.push( ')' );
+    code.push( '.setContent( \'' + form.content.value.replace( '\'', '\\\'' ) + '\' )' );
+    if ( form.autoShow.checked ) {
+      code.push( '.show()' );
+    }
+    code.push( ';' );
     $('#code').html( code.join( '\n' ) );
 
     window.prettyPrint && prettyPrint();
 
+    $('form input[value*="Relative"]').each( function( idx, elmt ) {
+      showBtn = showBtn || $(elmt).prop( 'checked' );
+    });
+    disabled = !showBtn && !$('#position-absolute').prop( 'checked' );
+
+    $('#left').prop( 'disabled', disabled );
+    $('#top').prop('disabled', disabled );
+    $('.spawner').css( 'display', showBtn ? 'block' : 'none' );
+
     if ( overlay ) { overlay.destroy(); }
-    overlay = new Overlay( options, spawner );
+    overlay = new Overlay( options, spawner )
+      .setContent( form.content.value )
+      ;
+
+    if ( form.autoShow.checked ) { overlay.show(); }
 
     return overlay;
   }
