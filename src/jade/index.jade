@@ -4,12 +4,18 @@ html
     title Overlay
     link(rel='stylesheet', type='text/css', href='bootstrap.css')
     link(rel='stylesheet', type='text/css', href='bootstrap-responsive.css')
+    link(rel='stylesheet', type='text/css', href='prettify.css')
     link(rel='stylesheet', type='text/css', href='style.css')
     link(rel='stylesheet', type='text/css', href='overlay.css')
 
   body
 
+
     .container-fluid
+      .row-fluid
+        .span12
+          header
+            h1 overlay.js
       .row-fluid
         .span2.options
           form
@@ -54,7 +60,7 @@ html
 
             fieldset
               legend Content
-              textarea(rows=3, name='content')
+              textarea(rows=3, name='content', id='content')
                 | Sample content.
 
             fieldset
@@ -81,16 +87,22 @@ html
                 input(type='checkbox', name='close', checked)
                 | Show close button
 
-            fieldset.submit
-              legend &nbsp;
-              input.btn.btn-large(type='button', value='Create!', onclick='app.createOverlay(this.form)')
+        .span6
+          header
+            h2 Demo
+          .sandbox.well
+            span.btn.spawner Show overlay
 
-        .span10.sandbox.well
-          span.btn.spawner BOOM!
+        .span4
+          header
+            h2 Code
+          pre.prettyprint.linenum#code
 
     script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    // script(type='text/javascript', src='https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js')
     script(type='text/javascript', src='underscore-min.js')
     script(type='text/javascript', src='bootstrap.js')
+    script(type='text/javascript', src='prettify.js')
     script(type='text/javascript', src='../lib/api.js')
     script(type='text/javascript', src='../lib/Overlay.js')
     script(type='text/javascript', src='../lib/mixin/Position.Absolute.js')
