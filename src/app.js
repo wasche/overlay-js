@@ -2,7 +2,9 @@
 var app = (function (){
 
   var overlay
-    , app = {};
+    , sandbox = $('.sandbox')[ 0 ]
+    , app = {}
+    ;
 
   app.createOverlay = function( form ) {
     var options = {
@@ -10,6 +12,7 @@ var app = (function (){
     , showCloseButton : form.close.checked
     , autoShow : form.autoShow.checked
     , closeContent : '&times;'
+    , container : sandbox
     };
 
     for (var i = form.backdrop.length - 1; i >= 0; i--) {
@@ -22,12 +25,20 @@ var app = (function (){
     for (i = form.position.length - 1; i >= 0; i--) {
       if ( form.position[ i ].checked ) {
         options.position = Overlay[ 'Position' + form.position[ i ].value ];
+        break;
       }
+    }
+    if ( options.position == Overlay.PositionAbsolute ) {
+      var l = parseInt( form.left.value )
+        , t = parseInt( form.top.value )
+        ;
+      options.position = Overlay.PositionAbsolute( l, t );
     }
 
     for (i = form.style.length - 1; i >= 0; i--) {
       if ( form.style[ i ].checked ) {
         options.style = form.style[ i ].value;
+        break;
       }
     }
 
