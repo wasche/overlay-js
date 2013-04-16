@@ -25,13 +25,13 @@ html
             fieldset
               legend Backdrop
               label.radio
-                input(type='radio', name='backdrop', id='backdrop-0', value=0, checked)
+                input(type='radio', name='backdrop', id='backdrop-never', value='NEVER', checked)
                 | Never
               label.radio
-                input(type='radio', name='backdrop', id='backdrop-1', value=1)
+                input(type='radio', name='backdrop', id='backdrop-always', value='ALWAYS')
                 | Always
               label.radio
-                input(type='radio', name='backdrop', id='backdrop-2', value=2)
+                input(type='radio', name='backdrop', id='backdrop-when_pinned', value='WHEN_PINNED')
                 | When pinned
 
             fieldset
@@ -81,10 +81,10 @@ html
             fieldset
               legend Other
               label.checkbox
-                input(type='checkbox', name='autoShow', checked)
+                input(type='checkbox', name='autoShow', id='autoShow', checked)
                 | Show automatically
               label.checkbox
-                input(type='checkbox', name='close', checked)
+                input(type='checkbox', name='close', id='showClose', checked)
                 | Show close button
 
         .span6
@@ -99,16 +99,15 @@ html
           pre.prettyprint.linenum#code
 
     script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-    // script(type='text/javascript', src='https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js')
     script(type='text/javascript', src='underscore-min.js')
     script(type='text/javascript', src='bootstrap.js')
     script(type='text/javascript', src='prettify.js')
-    script(type='text/javascript', src='../lib/api.js')
-    script(type='text/javascript', src='../lib/Overlay.js')
-    script(type='text/javascript', src='../lib/mixin/Position.Absolute.js')
-    script(type='text/javascript', src='../lib/mixin/Position.Center.js')
-    script(type='text/javascript', src='../lib/mixin/Position.RelativeAbove.js')
-    script(type='text/javascript', src='../lib/mixin/Position.RelativeBelow.js')
-    script(type='text/javascript', src='../lib/mixin/Position.RelativeLeft.js')
-    script(type='text/javascript', src='../lib/mixin/Position.RelativeRight.js')
+    script(type='text/javascript', src='api.js')
+    script(type='text/javascript', src='Overlay.js')
+    script(type='text/javascript', src='mixin/Position.Absolute.js')
+    script(type='text/javascript', src='mixin/Position.Center.js')
+    script(type='text/javascript', src='mixin/Position.RelativeAbove.js')
+    script(type='text/javascript', src='mixin/Position.RelativeBelow.js')
+    script(type='text/javascript', src='mixin/Position.RelativeLeft.js')
+    script(type='text/javascript', src='mixin/Position.RelativeRight.js')
     script(type='text/javascript', src='app.js')

@@ -21,6 +21,11 @@ module.exports = function(grunt) {
         , { expand : true, cwd : 'src/', src : '*.png', dest : 'out/' }
         ]
       }
+    , dist : {
+        files : [
+          { expand : true, cwd : 'lib/', src : '**/*.js', dest : 'out/' }
+        ]
+      }
     }
   , setup : {
       // make dir out
@@ -30,8 +35,8 @@ module.exports = function(grunt) {
       // remove out dir
     }
   , dist : {
-      // build css
-      // zip lib files + css
+      // copy lib files
+      // zip js, css
     }
   , jade : {
       compile : {
@@ -84,7 +89,7 @@ module.exports = function(grunt) {
         }
       }
     , copy : {
-        files : [ 'src/*.js', 'src/*.css', 'src/*.png' ]
+        files : [ 'src/*.js', 'src/*.css', 'src/*.png', 'lib/*.js' ]
       , tasks : [ 'copy' ]
       }
     }
