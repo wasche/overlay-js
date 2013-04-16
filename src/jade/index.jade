@@ -40,6 +40,22 @@ html
             fieldset
               legend Content
               textarea(rows=3, name='content')
+                | Sample content.
+
+            fieldset
+              legend Style
+              label.radio
+                input(type='radio', name='style', id='style-alert', value='alert', checked)
+                | Alert
+              label.radio
+                input(type='radio', name='style', id='style-error', value='alert alert-error')
+                | Error
+              label.radio
+                input(type='radio', name='style', id='style-success', value='alert alert-success')
+                | Success
+              label.radio
+                input(type='radio', name='style', id='style-info', value='alert alert-info')
+                | Info
 
             fieldset
               legend Other
@@ -52,7 +68,7 @@ html
 
             fieldset
               legend &nbsp;
-              input(type='button', value='Create!', onclick='createOverlay(this.form)')
+              input(type='button', value='Create!', onclick='app.createOverlay(this.form)')
 
         .span10.sandbox
 
