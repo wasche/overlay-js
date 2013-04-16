@@ -1,0 +1,4 @@
+.options textarea{width:155px}
+.sandbox{height:600px;position:relative;}
+.sandbox .spawner{position:absolute;left:50%;top:50%;margin-left:-56px;margin-top:-15px;display:none}
+.overlay.alert{margin-bottom:0}

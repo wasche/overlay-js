@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Overlay</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="prettify.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="overlay.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <header>
+            <h1>overlay.js</h1>
+          </header>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span2 options">
+          <form>
+            <header>
+              <h2>Options</h2>
+            </header>
+            <fieldset>
+              <legend>Backdrop</legend>
+              <label class="radio">
+                <input type="radio" name="backdrop" id="backdrop-0" value="0" checked>Never
+              </label>
+              <label class="radio">
+                <input type="radio" name="backdrop" id="backdrop-1" value="1">Always
+              </label>
+              <label class="radio">
+                <input type="radio" name="backdrop" id="backdrop-2" value="2">When pinned
+              </label>
+            </fieldset>
+            <fieldset>
+              <legend>Position</legend>
+              <label class="radio">
+                <input type="radio" name="position" id="position-absolute" value="Absolute">Absolute
+              </label>
+              <label class="radio">
+                <input type="radio" name="position" id="position-center" value="Center" checked>Center
+              </label>
+              <label class="radio">
+                <input type="radio" name="position" id="position-relative-above" value="RelativeAbove">Relative (above)
+              </label>
+              <label class="radio">
+                <input type="radio" name="position" id="position-relative-below" value="RelativeBelow">Relative (below)
+              </label>
+              <label class="radio">
+                <input type="radio" name="position" id="position-relative-left" value="RelativeLeft">Relative (left)
+              </label>
+              <label class="radio">
+                <input type="radio" name="position" id="position-relative-right" value="RelativeRight">Relative (right)
+              </label>
+              <div class="controls-row">
+                <input type="text" name="left" id="left" placeholder="left" disabled class="input-mini">
+                <input type="text" name="top" id="top" placeholder="top" disabled class="input-mini">
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Content</legend>
+              <textarea rows="3" name="content" id="content">Sample content.</textarea>
+            </fieldset>
+            <fieldset>
+              <legend>Style</legend>
+              <label class="radio">
+                <input type="radio" name="style" id="style-alert" value="alert" checked>Alert
+              </label>
+              <label class="radio">
+                <input type="radio" name="style" id="style-error" value="alert alert-error">Error
+              </label>
+              <label class="radio">
+                <input type="radio" name="style" id="style-success" value="alert alert-success">Success
+              </label>
+              <label class="radio">
+                <input type="radio" name="style" id="style-info" value="alert alert-info">Info
+              </label>
+            </fieldset>
+            <fieldset>
+              <legend>Other</legend>
+              <label class="checkbox">
+                <input type="checkbox" name="autoShow" checked>Show automatically
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="close" checked>Show close button
+              </label>
+            </fieldset>
+          </form>
+        </div>
+        <div class="span6">
+          <header>
+            <h2>Demo</h2>
+          </header>
+          <div class="sandbox well"><span class="btn spawner">Show overlay</span></div>
+        </div>
+        <div class="span4">
+          <header>
+            <h2>Code</h2>
+          </header>
+          <pre id="code" class="prettyprint linenum"></pre>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script type="text/javascript" src="prettify.js"></script>
+    <script type="text/javascript" src="api.js"></script>
+    <script type="text/javascript" src="Overlay.js"></script>
+    <script type="text/javascript" src="mixin/Position.Absolute.js"></script>
+    <script type="text/javascript" src="mixin/Position.Center.js"></script>
+    <script type="text/javascript" src="mixin/Position.RelativeAbove.js"></script>
+    <script type="text/javascript" src="mixin/Position.RelativeBelow.js"></script>
+    <script type="text/javascript" src="mixin/Position.RelativeLeft.js"></script>
+    <script type="text/javascript" src="mixin/Position.RelativeRight.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
