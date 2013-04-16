@@ -33,9 +33,6 @@ html
               label.radio
                 input(type='radio', name='position', id='position-absolute', value='Absolute')
                 | Absolute
-              .controls-row
-                input.input-mini(type='text', name='left', id='left', placeholder='left', disabled)
-                input.input-mini(type='text', name='top', id='top', placeholder='top', disabled)
               label.radio
                 input(type='radio', name='position', id='position-center', value='Center', checked)
                 | Center
@@ -51,6 +48,9 @@ html
               label.radio
                 input(type='radio', name='position', id='position-relative-right', value='RelativeRight')
                 | Relative (right)
+              .controls-row
+                input.input-mini(type='text', name='left', id='left', placeholder='left', disabled)
+                input.input-mini(type='text', name='top', id='top', placeholder='top', disabled)
 
             fieldset
               legend Content
@@ -95,4 +95,8 @@ html
     script(type='text/javascript', src='../lib/Overlay.js')
     script(type='text/javascript', src='../lib/mixin/Position.Absolute.js')
     script(type='text/javascript', src='../lib/mixin/Position.Center.js')
+    script(type='text/javascript', src='../lib/mixin/Position.RelativeAbove.js')
+    script(type='text/javascript', src='../lib/mixin/Position.RelativeBelow.js')
+    script(type='text/javascript', src='../lib/mixin/Position.RelativeLeft.js')
+    script(type='text/javascript', src='../lib/mixin/Position.RelativeRight.js')
     script(type='text/javascript', src='app.js')

@@ -2,7 +2,8 @@
 var app = (function (){
 
   var overlay
-    , sandbox = $('.sandbox').first()
+    , sandbox = $('.sandbox')[ 0 ]
+    , spawner = $('.spawner')[ 0 ]
     , app = {}
     ;
 
@@ -25,14 +26,14 @@ var app = (function (){
     for (i = form.position.length - 1; i >= 0; i--) {
       if ( form.position[ i ].checked ) {
         options.position = Overlay[ 'Position' + form.position[ i ].value ];
+        if ( ['Absolute', 'RelativeAbove', 'RelativeBelow', 'RelativeLeft', 'RelativeRight'].indexOf( form.position[ i ].value ) >= 0 ) {
+          var l = parseInt( form.left.value ) || 0
+            , t = parseInt( form.top.value ) || 0
+            ;
+          options.position = options.position( l, t );
+        }
         break;
       }
-    }
-    if ( options.position == Overlay.PositionAbsolute ) {
-      var l = parseInt( form.left.value )
-        , t = parseInt( form.top.value )
-        ;
-      options.position = Overlay.PositionAbsolute( l, t );
     }
 
     for (i = form.style.length - 1; i >= 0; i--) {
@@ -44,7 +45,7 @@ var app = (function (){
 
 console.log( options );
     if ( overlay ) { overlay.destroy(); }
-    overlay = new Overlay( options );
+    overlay = new Overlay( options, spawner );
 
     return overlay;
   }
@@ -56,15 +57,14 @@ console.log( options );
 $(function() {
 
   $('form input[name="position"]').change( function() {
-    var disabled = !$('#position-absolute').prop( 'checked' );
-    $('#left').prop( 'disabled', disabled );
-    $('#top').prop('disabled', disabled );
-
     var showBtn = false;
     $('form input[value*="Relative"]').each( function( idx, elmt ) {
       showBtn = showBtn || $(elmt).prop( 'checked' );
     });
+    var disabled = !showBtn && !$('#position-absolute').prop( 'checked' );
 
+    $('#left').prop( 'disabled', disabled );
+    $('#top').prop('disabled', disabled );
     $('.spawner').css( 'display', showBtn ? 'block' : 'none' );
   });
 
