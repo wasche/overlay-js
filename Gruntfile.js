@@ -57,6 +57,7 @@ module.exports = function(grunt) {
       , files : {
           'out/style.css' : 'src/styl/style.styl'
         , 'out/overlay.css' : 'src/styl/overlay.styl'
+        , 'out/windowShade.css' : 'src/styl/windowShade.styl'
         }
       }
     }
